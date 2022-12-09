@@ -1,23 +1,33 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent, CounterComponent],
     }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
 
   it(`app component value should be 1 on init`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const counterEl = fixture.debugElement.query(
+      By.directive(CounterComponent)
+    );
+    const counter: CounterComponent = counterEl.componentInstance;
+
+    // Check initial value
+    expect(counter.count).toEqual(-1);
     expect(app.value).toEqual(1);
+
+    // Populate app value (1) inside counter + increment
+    fixture.detectChanges();
+    expect(app.value).toEqual(1);
+    expect(counter.count).toEqual(2);
   });
 });
