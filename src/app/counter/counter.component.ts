@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CounterComponent implements OnInit {
   @Input() count: number = -1;
 
+  // We increment the counter on init
   ngOnInit() {
     this.increment();
   }
