@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-integration-test-jasmine'`, () => {
+  it(`app component value should be 1 on init`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.value).toEqual(1);
