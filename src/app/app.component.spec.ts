@@ -27,6 +27,8 @@ describe('AppComponent', () => {
 
     // Populate app value (1) inside counter + increment
     fixture.detectChanges();
+
+    // Check value after init
     expect(app.value).toEqual(1);
     expect(counter.count).toEqual(2);
   });
