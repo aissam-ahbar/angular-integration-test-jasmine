@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     app = fixture.componentInstance;
   });
 
-  it(`app component value should be 1 on init`, () => {
+  it(`Given app component initial value 1, should increment value in counter by 1`, () => {
     const counterEl = fixture.debugElement.query(
       By.directive(CounterComponent)
     );
